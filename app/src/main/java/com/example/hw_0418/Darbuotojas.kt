@@ -11,6 +11,8 @@ class Darbuotojas (
     //klasę Darbuotojas su savo kintamaisiais vardas, pavardė, asmens kodas (kaip tekstas), amžius, pareigos įmonėje, darbo patirtis (metais).
     var amzius = 0
         private set
+    val pareigosImoneje : String = ""
+    var darboPatirtis = 0
 
 
     init {

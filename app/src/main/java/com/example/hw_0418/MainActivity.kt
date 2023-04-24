@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val darbuotojas01 = Darbuotojas("Vardas01", "pavarde01", "39508210412")
-        
+
 
     }
 }
