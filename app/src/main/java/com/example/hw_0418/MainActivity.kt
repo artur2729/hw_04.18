@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val darbuotojas01 = Darbuotojas("Vardas01", "pavarde01", "39508210412")
+        val darbuotojas02 = Darbuotojas("Vardas02", "pavarde01", "39508210412")
+        val darbuotojas03 = Darbuotojas("Vardas03", "pavarde01", "39508210412")
+        val darbuotojas04 = Darbuotojas("Vardas04", "pavarde01", "39508210412")
 
 
     }
