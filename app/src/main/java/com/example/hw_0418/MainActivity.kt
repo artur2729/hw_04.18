@@ -4,21 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import java.time.LocalDate
 import java.time.Period
 import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
-    val TAG ="hw"
+    val TAG = "hw"
 
     lateinit var imone: Imone
     lateinit var darutojuListView: ListView
+    lateinit var button: Button
     lateinit var adapter: ArrayAdapter<Darbuotojas>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        button = findViewById(R.id.button)
 
         val darbuotojas01 = Darbuotojas("Vardas01", "pavarde01", "39505210412")
         val darbuotojas02 = Darbuotojas("Vardas02", "pavarde01", "39401210412")
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "doExercise: ${imone.sarasas}")
 
         setUpStudentListView()
+        setOnClickFilter()
     }
 
     private fun setUpStudentListView() {
@@ -45,5 +50,14 @@ class MainActivity : AppCompatActivity() {
         )
         darutojuListView.adapter = adapter
 
+    }
+
+    private fun setOnClickFilter() {       //filter listView change
+        button.setOnClickListener() {
+            imone.darbuotojuFiltras(TAG)
+            adapter.notifyDataSetChanged()
+            true
+            setUpStudentListView()
+        }
     }
 }
