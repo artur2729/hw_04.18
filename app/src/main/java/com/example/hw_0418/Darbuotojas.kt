@@ -2,6 +2,7 @@ package com.example.hw_0418
 
 import java.time.LocalDate
 import java.time.Period
+import java.time.format.DateTimeFormatter
 
 class Darbuotojas (
     val vardas: String,
@@ -11,7 +12,7 @@ class Darbuotojas (
     //klasę Darbuotojas su savo kintamaisiais vardas, pavardė, asmens kodas (kaip tekstas), amžius, pareigos įmonėje, darbo patirtis (metais).
     var amzius = 0
         private set
-    val pareigosImoneje : String = ""
+    var pareigosImoneje : String = ""
     var darboPatirtis = 0
 
 
@@ -20,7 +21,20 @@ class Darbuotojas (
     }
 
     fun countAge(): Int{   //birthDay: String
-        val gimimoData = asmensKodas.substring(1,3).toInt()
-        return  LocalDate.now().year - gimimoData
+        val gimimoData = asmensKodas.substring(1,7)
+        var formatter = DateTimeFormatter.ofPattern("yyMMdd")
+        var date = LocalDate.parse(gimimoData, formatter)
+        var metai = Period.between(date, LocalDate.now()).years
+        if(metai < 0) metai = metai + 100
+        return metai
+    }
+
+    override fun toString(): String {
+        return "Darbuotojas(%s %s, pareigos: %s, darbo patirtis: %s)".format(
+            this.vardas,
+            this.pavarde,
+            this.pareigosImoneje,
+            this.darboPatirtis
+        )
     }
 }
